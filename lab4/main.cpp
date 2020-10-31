@@ -1,25 +1,34 @@
 #include <iostream>
 #include <array>
-
+#include <vector>
 using namespace std;
+
+
+//void print_vector(vector<int>*input) {
+//	for (int i = 0; i < input->size(); i++) {
+//		cout << input->at(i) << endl;
+//	}
+//}
+
+void print_vector(vector<int>& input) {
+	for (int i = 0; i < input.size(); i++) {
+		cout << input[i] << endl;
+	}
+}
 
 
 int main() {
 
-	array<int, 4> numbers;
+	int size;
+	cout << "Size of array:" << endl;
+	cin >> size;
+	vector<int>numbers;
 
-	for (int i = 0; i < 4; i++) {
-		numbers[i] = i;
+	for (int i = 0; i < size; i++) {
+		numbers.push_back(i);
 	}
 
-	int* ptr_numbers = &numbers[0];
-
-	for (int i = 0; i < 4; i++) {
-	
-		cout << *ptr_numbers << endl;
-			++ptr_numbers;
-	}
-
+	print_vector(numbers);
 	
 	return 0;
 }
