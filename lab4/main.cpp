@@ -1,27 +1,25 @@
 #include <iostream>
+#include <array>
 
 using namespace std;
 
 
 int main() {
 
-	int variable = 8;
-	int* ptr;
+	array<int, 4> numbers;
 
-	cout << &variable << endl;
+	for (int i = 0; i < 4; i++) {
+		numbers[i] = i;
+	}
 
-	ptr = &variable;
+	int* ptr_numbers = &numbers[0];
 
-	cout << *ptr << endl;
+	for (int i = 0; i < 4; i++) {
+	
+		cout << *ptr_numbers << endl;
+			++ptr_numbers;
+	}
 
-	*ptr = 25;
-	cout << variable << endl;
-
-	variable = 15;
-	cout << *ptr << endl;
-
-
-
-
+	
 	return 0;
 }
