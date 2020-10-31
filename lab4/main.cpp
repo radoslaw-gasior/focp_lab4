@@ -10,32 +10,38 @@ using namespace std;
 
 int main() {
 
-	map<string, int>dictionary;
 
-	ifstream input;
-	input.open("lorem.txt");
+   
+    map<std::string, vector<int>> dictionary;
 
-	string line;
+    ifstream input("lorem.txt");
 
-	if (input.is_open()) {
+    if (input.is_open()) {
 
-		string word;
+        std::string word;
 
-		while (getline(input, line)) {
+        int line_number = 0;
 
-			if (dictionary.find(word) == dictionary.end()) {
-				dictionary.insert({ word,1 });
-			}
-			else {
-				dictionary[word]++;
-			}
-		}
-	}
-	string tmp;
-	cout << "choose a word" << endl;
-	cin >> tmp;
+        while (getline(input, word)) {
+            if (dictionary.find(word) == dictionary.end()) { 
+                dictionary.insert({ word, {line_number} });
+            }
+            else {
+                dictionary[word].push_back(line_number);
+            }
+            ++line_number;
+        }
+    }
 
-	cout << "the word " << tmp << " appears " << dictionary[tmp] << " times " << endl;
+   string tmp;
 
-	return 0;
+    cout << "Choose a word: " << endl;
+    cin >> tmp;
+
+    cout << "The word " << tmp << " appears in lines " <<endl;
+    for (int i = 0; i < dictionary[tmp].size(); i++) {
+        cout << dictionary[tmp][i] << endl;
+    }
+
+    return 0;
 }
